@@ -47,6 +47,9 @@
     <Compile Include="Email.cs" />
     <Compile Include="FileLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unix.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="VND.cs" />
     <Compile Include="XML.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

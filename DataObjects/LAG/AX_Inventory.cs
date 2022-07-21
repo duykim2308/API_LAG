@@ -8,6 +8,11 @@ namespace DataObjects.LAG
 {
     public class AX_Inventory
     {
+        public List<Inventory> inventories { get; set; }
+    }
+
+        public class Inventory
+    {
         public string Item { get; set; }
         public string Location { get; set; }
         public string Size { get; set; } 
@@ -17,7 +22,7 @@ namespace DataObjects.LAG
         public float PhysicalInventory { get; set; }  
 
 
-        public AX_Inventory()
+        public Inventory()
         {
             Item = "";
             Location = "";
@@ -28,7 +33,7 @@ namespace DataObjects.LAG
             PhysicalInventory = 0; 
         }
 
-        public AX_Inventory(System.Data.DataRow row)
+        public Inventory(System.Data.DataRow row)
         {
             Item = row["Item"] != null ? row["Item"].ToString() : "";
             Location = row["Location"] != null ? row["Location"].ToString() : "";

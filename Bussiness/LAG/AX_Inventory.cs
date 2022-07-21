@@ -8,7 +8,7 @@ namespace Bussiness.LAG
 {
     public class AX_Inventory
     {
-        public static List<DataObjects.LAG.AX_Inventory> Get(string location, string item)
+        public static DataObjects.LAG.AX_Inventory Get(string location, string item)
         {
             return DataAccess.LAG.AX_Inventory.Get(location, item);
         }

@@ -7,32 +7,33 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    public class AX_LocationController : ApiController
+    public class AX_TrackingSerialController : ApiController
     {
-        // GET: api/AX_Product
+        // GET: api/AXTrackingSerial
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
+        //http://erpapi.liena.vn:8082/api/AXTrackingSerial/080220037680
         [HttpGet]
-        [Route("api/AXLocation")]
-        public DataObjects.LAG.AX_Location GetProduct()
+        [Route("api/AXTrackingSerial/{search}")]
+        public DataObjects.LAG.AX_TrackingSerial GetTrackingSerial(string search)
         {
-            return Bussiness.LAG.AX_Location.Get();
+            return Bussiness.LAG.AX_TrackingSerial.Get(search);
         }
 
-        // POST: api/AX_Product
+        // POST: api/AXTrackingSerial
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/AX_Product/5
+        // PUT: api/AXTrackingSerial/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/AX_Product/5
+        // DELETE: api/AXTrackingSerial/5
         public void Delete(int id)
         {
         }

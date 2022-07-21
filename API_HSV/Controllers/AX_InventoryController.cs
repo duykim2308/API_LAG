@@ -16,8 +16,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        //http://ldcpbi/api/axinventory?location=NDLAW&item=BOSGOI01
         [Route("api/AXInventory")]
-        public List<DataObjects.LAG.AX_Inventory> GetInventory(string location, string item)
+        public DataObjects.LAG.AX_Inventory GetInventory(string location, string item)
         {
             return Bussiness.LAG.AX_Inventory.Get(location, item);
         }

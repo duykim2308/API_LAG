@@ -56,6 +56,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CallCenter.cs" />
+    <Compile Include="LAG\AX_TransferOrder.cs" />
+    <Compile Include="LAG\AX_TrackingSerial.cs" />
+    <Compile Include="LAG\AX_SalesOrder.cs" />
+    <Compile Include="LAG\AX_Customer.cs" />
+    <Compile Include="LAG\STEL_CallCenter.cs" />
     <Compile Include="LAG\AX_Inventory.cs" />
     <Compile Include="LAG\AX_Location.cs" />
     <Compile Include="LAG\AX_Product.cs" />

@@ -8,23 +8,28 @@ namespace DataObjects.LAG
 {
     public class AX_Location
     {
-        public string Location { get; set; }
+        public List<Location> locations { get; set; }
+    }
+
+    public class Location
+    {
+        public string LocationCode { get; set; }
         public string Name { get; set; }
         public string Site { get; set; } 
         public string Transit { get; set; }  
 
 
-        public AX_Location()
+        public Location()
         {
-            Location = "";
+            LocationCode = "";
             Name = "";
             Site = "";
             Transit = ""; 
         }
 
-        public AX_Location(System.Data.DataRow row)
+        public Location(System.Data.DataRow row)
         {
-            Location = row["Location"] != null ? row["Location"].ToString() : "";
+            LocationCode = row["Location"] != null ? row["Location"].ToString() : "";
             Name = row["Name"] != null ? row["Name"].ToString() : "";
             Site = row["Site"] != null ? row["Site"].ToString() : "";
             Transit = row["Transit"] != null ? row["Transit"].ToString() : ""; 

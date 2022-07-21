@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Bussiness.LAG
 {
-    public class AX_Product
+    public class AX_TrackingSerial
     {
-        public static DataObjects.LAG.AX_Product Get(string Search)
+        public static DataObjects.LAG.AX_TrackingSerial Get(string search)
         {
-            return DataAccess.LAG.AX_Product.Get(Search);
+            return DataAccess.LAG.AX_TrackingSerial.Get(search);
         }
     }
 }

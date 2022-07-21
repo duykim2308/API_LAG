@@ -9,9 +9,10 @@ namespace DataAccess.LAG
 {
     public class AX_Inventory
     {
-        public static List<DataObjects.LAG.AX_Inventory> Get(string location, string item)
+        public static DataObjects.LAG.AX_Inventory Get(string location, string item)
         {
-            List<DataObjects.LAG.AX_Inventory> lsArray = new List<DataObjects.LAG.AX_Inventory>();
+            DataObjects.LAG.AX_Inventory inventory = new DataObjects.LAG.AX_Inventory();
+            List<DataObjects.LAG.Inventory> lsArray = new List<DataObjects.LAG.Inventory>();
             DataProvider.ConnectionAPI conn = null;
             try
             {
@@ -21,11 +22,12 @@ namespace DataAccess.LAG
                 lsInput.Add(new System.Data.SqlClient.SqlParameter("@location", location));
                 lsInput.Add(new System.Data.SqlClient.SqlParameter("@item", item));
                 System.Data.DataTable dt = conn.ExecuteNonQueryDataTable("sp_AX_InventoryByLocation", lsInput);
-                foreach (System.Data.DataRow row in dt.Rows) { lsArray.Add(new DataObjects.LAG.AX_Inventory(row)); }
+                foreach (System.Data.DataRow row in dt.Rows) { lsArray.Add(new DataObjects.LAG.Inventory(row)); }
+                if (lsArray.Count > 0) inventory.inventories = lsArray;
             }
             catch (Exception ex) { FileLog.WriteFileLog("DataAccess-->sp_AX_InventoryByLocation" + ex.Message); }
             finally { conn.Close(); }
-            return lsArray;
+            return inventory;
         }
     }
 }

@@ -192,6 +192,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AX_TransferOrderController.cs" />
+    <Compile Include="Controllers\AX_TrackingSerialController.cs" />
+    <Compile Include="Controllers\AX_CustomerController.cs" />
+    <Compile Include="Controllers\AX_SalesOrderController.cs" />
     <Compile Include="Controllers\AX_InventoryController.cs" />
     <Compile Include="Controllers\AX_LocationController.cs" />
     <Compile Include="Controllers\AX_ProductController.cs" />
@@ -200,6 +204,7 @@
     <Compile Include="Controllers\GHNController.cs" />
     <Compile Include="Controllers\InsiderController.cs" />
     <Compile Include="Controllers\KiotViet_BranchController.cs" />
+    <Compile Include="Controllers\LAG_CallCenterController.cs" />
     <Compile Include="Controllers\LDAPController.cs" />
     <Compile Include="Controllers\HaravanController.cs" />
     <Compile Include="Controllers\NinjavanController.cs" />

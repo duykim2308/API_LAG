@@ -32,7 +32,7 @@ namespace Bussiness
                 connection.Credential = credential;
                 connection.AuthType = AuthType.Ntlm;
                 connection.Bind();
-                result = true;
+                result = true;  
             }
             catch (Exception ex)
             {
@@ -40,8 +40,8 @@ namespace Bussiness
             }
             return result;
         }
-        const string lDAP_Username = "kim.nd";
-        const string lDAP_Password = "P@ssw0rd1s3rp";
+        const string lDAP_Username = "erp_dev1";
+        const string lDAP_Password = "123456";
 
         public static DataObjects.LDAP GetUser_anr(DataObjects.LDAP.Login login)
         {

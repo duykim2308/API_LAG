@@ -7,28 +7,28 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    public class AX_ProductController : ApiController
+    public class AX_TransferOrderController : ApiController
     {
-        // GET: api/AX_Product
+        // GET: api/AXTransferOrder
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        //http://ldcpbi/api/axproduct/goi
         [HttpGet]
-        [Route("api/AXProduct/{search}")]
-        public DataObjects.LAG.AX_Product GetProduct(string Search)
+        //http://localhost:52481/api/AXTransferOrder?fd='20220601'&td='20220602'&location='TPBHW'
+        [Route("api/AXTransferOrder")]
+        public DataObjects.LAG.AX_TransferOrder GetOrder(string fd, string td, string location)
         {
-            return Bussiness.LAG.AX_Product.Get(Search);
+            return Bussiness.LAG.AX_TransferOrder.Get(fd, td, location);
         }
 
-        //http://ldcpbi/api/axproduct
         [HttpGet]
-        [Route("api/AXProduct")]
-        public DataObjects.LAG.AX_Product GetProduct()
+        //http://localhost:52481/api/AXTransferOrder/IMTF-000021
+        [Route("api/AXTransferOrder/{id}")]
+        public DataObjects.LAG.AX_TransferOrderObject GetDetail(string id)
         {
-            return Bussiness.LAG.AX_Product.Get("");
+            return Bussiness.LAG.AX_TransferOrder.GetDetail(id);
         }
 
         // POST: api/AX_Product
