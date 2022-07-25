@@ -27,18 +27,18 @@ namespace DataAccess.LAG
                 System.Data.DataTable dtproduct = new System.Data.DataTable();
                 System.Data.DataTable dtvariant = new System.Data.DataTable();
                 System.Data.DataTable dtpricegroup = new System.Data.DataTable();
-              
-                if (ds.Tables.Count > 0)
+
+                if (ds.Tables.Count > 1)
                 {
                     dtproduct = ds.Tables[0];
                     dtvariant = ds.Tables[1];
-                    dtpricegroup = ds.Tables[2]; 
+                    dtpricegroup = ds.Tables[2];
 
-                    foreach (System.Data.DataRow row_product in dtproduct.Rows) 
+                    foreach (System.Data.DataRow row_product in dtproduct.Rows)
                     {
                         foreach (System.Data.DataRow row_variant in dtvariant.Rows)
                         {
-                            var pricegroup_ = dtpricegroup.Select("InventDimID='"+ row_variant["InventDimID"] + "'").AsEnumerable();// + row_variant["InventDimID"]); 
+                            var pricegroup_ = dtpricegroup.Select("InventDimID='" + row_variant["InventDimID"] + "'").AsEnumerable();// + row_variant["InventDimID"]); 
                             foreach (System.Data.DataRow row_pricegroup in pricegroup_)
                             {
                                 lsArraypricegroups.Add(new DataObjects.LAG.PriceGroups(row_pricegroup));
@@ -51,7 +51,7 @@ namespace DataAccess.LAG
                             variant_.Style = row_variant["Style"] != null ? row_variant["Style"].ToString() : "";
                             variant_.Config = row_variant["Config"] != null ? row_variant["Config"].ToString() : "";
                             variant_.Color = row_variant["Color"] != null ? row_variant["Color"].ToString() : "";
-                            variant_.PriceGroups = lsArraypricegroups.Where(m=>m.InventDimID == row_variant["InventDimID"].ToString()).ToList();
+                            variant_.PriceGroups = lsArraypricegroups.Where(m => m.InventDimID == row_variant["InventDimID"].ToString()).ToList();
                             lsArrayvariants.Add(variant_);
                         }
                         DataObjects.LAG.Product product_ = new DataObjects.LAG.Product();
@@ -66,7 +66,27 @@ namespace DataAccess.LAG
                     }
                     if (lsArrayProducts.Count > 0) product.products = lsArrayProducts;
                 }
-                else product = null;               
+
+                else if (ds.Tables.Count == 1)
+                {
+                    dtproduct = ds.Tables[0];
+                    foreach (System.Data.DataRow row_product in dtproduct.Rows)
+                    {
+                        DataObjects.LAG.Product product_ = new DataObjects.LAG.Product();
+                        product_.Item = row_product["Item"] != null ? row_product["Item"].ToString() : "";
+                        product_.Name = row_product["Name"] != null ? row_product["Name"].ToString() : "";
+                        product_.BusinessLine = row_product["BusinessLine"] != null ? row_product["BusinessLine"].ToString() : "";
+                        product_.SubCat = row_product["SubCat"] != null ? row_product["SubCat"].ToString() : "";
+                        product_.ProductCat = row_product["ProductCat"] != null ? row_product["ProductCat"].ToString() : "";
+                        product_.CreateDate = row_product["CreateDate"] != null ? DateTime.Parse(row_product["CreateDate"].ToString()) : DateTime.Now;
+                        product_.Variants = lsArrayvariants;
+                        lsArrayProducts.Add(product_);
+                    }
+
+                    if (lsArrayProducts.Count > 0) product.products = lsArrayProducts;
+                }
+                 
+                else product = null;
             }
             catch (Exception ex) { FileLog.WriteFileLog("DataAccess-->sp_AX_Product_Get" + ex.Message); }
             finally { conn.Close(); }
