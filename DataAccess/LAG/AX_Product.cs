@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace DataAccess.LAG
                     {
                         foreach (System.Data.DataRow row_variant in dtvariant.Rows)
                         {
-                            var pricegroup_ = dtpricegroup.Select("InventDimID='LAG-000071'");// + row_variant["InventDimID"]); 
+                            var pricegroup_ = dtpricegroup.Select("InventDimID='"+ row_variant["InventDimID"] + "'").AsEnumerable();// + row_variant["InventDimID"]); 
                             foreach (System.Data.DataRow row_pricegroup in pricegroup_)
                             {
                                 lsArraypricegroups.Add(new DataObjects.LAG.PriceGroups(row_pricegroup));
@@ -50,7 +51,7 @@ namespace DataAccess.LAG
                             variant_.Style = row_variant["Style"] != null ? row_variant["Style"].ToString() : "";
                             variant_.Config = row_variant["Config"] != null ? row_variant["Config"].ToString() : "";
                             variant_.Color = row_variant["Color"] != null ? row_variant["Color"].ToString() : "";
-                            variant_.PriceGroups = lsArraypricegroups;
+                            variant_.PriceGroups = lsArraypricegroups.Where(m=>m.InventDimID == row_variant["InventDimID"].ToString()).ToList();
                             lsArrayvariants.Add(variant_);
                         }
                         DataObjects.LAG.Product product_ = new DataObjects.LAG.Product();

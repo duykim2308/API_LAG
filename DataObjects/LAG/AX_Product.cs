@@ -105,7 +105,7 @@ namespace DataObjects.LAG
             InventDimID = row["InventDimID"] != null ? row["InventDimID"].ToString() : "";
             PriceGroup = row["PriceGroup"] != null ? row["PriceGroup"].ToString() : "";
             FromDate = row["FromDate"] != null ? DateTime.Parse(row["FromDate"].ToString()) : DateTime.Now;
-            ToDate = row["PriceGroup"] != null ? DateTime.Parse(row["PriceGroup"].ToString()) : DateTime.Now;
+            ToDate = row["ToDate"] != null ? DateTime.Parse(row["ToDate"].ToString()) : DateTime.Now;
             Amount = row["Amount"] != null ? float.Parse(row["Amount"].ToString()) : 0;
             Currency = row["Currency"] != null ? row["Currency"].ToString() : "";
             UnitID = row["UnitID"] != null ? row["UnitID"].ToString() : "";
