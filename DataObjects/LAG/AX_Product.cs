@@ -85,7 +85,7 @@ namespace DataObjects.LAG
         public string PriceGroup { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
-        public float Amount { get; set; }
+        public decimal Amount { get; set; }
         public string Currency { get; set; }
         public string UnitID { get; set; }
 
@@ -106,7 +106,7 @@ namespace DataObjects.LAG
             PriceGroup = row["PriceGroup"] != null ? row["PriceGroup"].ToString() : "";
             FromDate = row["FromDate"] != null ? DateTime.Parse(row["FromDate"].ToString()) : DateTime.Now;
             ToDate = row["ToDate"] != null ? DateTime.Parse(row["ToDate"].ToString()) : DateTime.Now;
-            Amount = row["Amount"] != null ? float.Parse(row["Amount"].ToString()) : 0;
+            Amount = row["Amount"] != null ? decimal.Parse(row["Amount"].ToString()) : 0;
             Currency = row["Currency"] != null ? row["Currency"].ToString() : "";
             UnitID = row["UnitID"] != null ? row["UnitID"].ToString() : "";
         }
