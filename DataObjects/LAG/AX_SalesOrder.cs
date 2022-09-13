@@ -74,36 +74,45 @@ namespace DataObjects.LAG
     public class SalesLine
     {
         public string SalesID { get; set; }
-        public int LineNum { get; set; }
-        public string ItemID { get; set; }
+        public int LineNo { get; set; }
+        public string ItemID { get; set; } 
         public string Name { get; set; }
+        public float Qty { get; set; }
+        public string TaxGroup { get; set; }
         public float SalesPrice { get; set; }
-        public float LineDisc { get; set; }
+        public float DiscountAmt { get; set; }
         public float LineAmt { get; set; }
         public string SalesUnit { get; set; }
+        public string Note { get; set; } 
 
         public SalesLine()
         {
             SalesID = "";
-            LineNum = 0;
+            LineNo = 0;
             ItemID = "";
             Name = "";
+            Qty = 0;
+            TaxGroup = "";
             SalesPrice = 0;
-            LineDisc = 0;
+            DiscountAmt = 0;
             LineAmt = 0;
-            SalesUnit = "";
+            SalesUnit = ""; 
+            Note = "";
         }
 
         public SalesLine(System.Data.DataRow row)
         {
             SalesID = row["SalesID"] != null ? row["SalesID"].ToString() : "";
-            LineNum = row["LineNum"] != null ? int.Parse(row["LineNum"].ToString()) : 0;
+            LineNo = row["LineNo"] != null ? int.Parse(row["LineNo"].ToString()) : 0;
             ItemID = row["ItemID"] != null ? row["ItemID"].ToString() : "";
             Name = row["Name"] != null ? row["Name"].ToString() : "";
+            Qty = row["Qty"] != null ? float.Parse(row["Qty"].ToString()) : 0;
+            TaxGroup = row["TaxGroup"] != null ? row["TaxGroup"].ToString() : "";
             SalesPrice = row["SalesPrice"] != null ? float.Parse(row["SalesPrice"].ToString()) : 0;
-            LineDisc = row["LineDisc"] != null ? float.Parse(row["LineDisc"].ToString()) : 0;
+            DiscountAmt = row["DiscountAmt"] != null ? float.Parse(row["DiscountAmt"].ToString()) : 0;
             LineAmt = row["LineAmt"] != null ? float.Parse(row["LineAmt"].ToString()) : 0;
-            SalesUnit = row["SalesUnit"] != null ? row["SalesUnit"].ToString() : "";
+            SalesUnit = row["SalesUnit"] != null ? row["SalesUnit"].ToString() : ""; 
+            Note = row["Note"] != null ? row["Note"].ToString() : "";
         }
 
     }

@@ -38,7 +38,7 @@ namespace DataObjects.LAG
             Status = row["Status"] != null ? row["Status"].ToString() : "";
             ProductCode = row["ProductCode"] != null ? row["ProductCode"].ToString() : "";
             Size = row["Size"] != null ? row["Size"].ToString() : "";
-            Config = row["Config"] != null ? row["Serial"].ToString() : "";
+            Config = row["Config"] != null ? row["Config"].ToString() : "";
             Style = row["Style"] != null ? row["Style"].ToString() : "";
             Color = row["Color"] != null ? row["Color"].ToString() : "";
             Note = row["Note"] != null ? row["Note"].ToString() : ""; 
